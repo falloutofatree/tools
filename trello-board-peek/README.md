@@ -55,7 +55,7 @@ python3 scripts/list_cards.py --list "This week" --due-within 14
 Key behaviors:
 
 - Plain text output, grouped by list, with per-section card counts. Cards show due dates and labels when present.
-- `--json` returns the raw API payload instead of formatted text.
+- `--json` returns the board as JSON instead of formatted text. It honors `--list` and `--due-within`; when `--due-within` is set, overdue cards are pulled into a separate `overdue` key.
 - Read-only; never mutates the board.
 - Archived/closed lists and cards are excluded.
 - One API call per invocation. Trello rate limits: 300 req/10s per key, 100 req/10s per token.

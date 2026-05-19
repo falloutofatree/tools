@@ -120,13 +120,14 @@ def format_card_line(card: dict) -> str:
     return " ".join(bits)
 
 
-def format_text(
+def filter_board(
     board: dict,
-    list_filter: str | None = None,
-    due_within_days: int | None = None,
-) -> str:
-    lines: list[str] = []
-
+    list_filter: str | None,
+    due_within_days: int | None,
+) -> dict:
+    """Apply --list and --due-within, returning a board dict with filtered
+    `lists` and `cards`. When due_within_days is set, past-due cards are
+    pulled out under an `overdue` key so text and JSON output share one view."""
     raw_lists = sorted(board.get("lists", []), key=lambda l: l.get("pos", 0))
     if list_filter:
         needle = list_filter.lower()
@@ -136,28 +137,36 @@ def format_text(
     else:
         lists = raw_lists
 
+    kept_list_ids = {l["id"] for l in lists}
+    cards = [c for c in board.get("cards", []) if c["idList"] in kept_list_ids]
+
+    if due_within_days is None:
+        return {**board, "lists": lists, "cards": cards}
+
+    now = dt.datetime.now(dt.timezone.utc)
+    cutoff = now + dt.timedelta(days=due_within_days)
+    within: list[dict] = []
+    overdue: list[dict] = []
+    for c in cards:
+        due = parse_due(c)
+        if due is None:
+            continue
+        if due < now:
+            overdue.append(c)
+        elif due <= cutoff:
+            within.append(c)
+    overdue.sort(key=lambda c: c.get("due") or "")
+    return {**board, "lists": lists, "cards": within, "overdue": overdue}
+
+
+def format_text(board: dict, due_within_days: int | None) -> str:
+    lines: list[str] = []
+    lists = board.get("lists", [])
     cards_by_list: dict[str, list[dict]] = {}
     for c in board.get("cards", []):
         cards_by_list.setdefault(c["idList"], []).append(c)
+    overdue = board.get("overdue", [])
 
-    # Apply due-window filter and collect overdue cards for a top banner.
-    now = dt.datetime.now(dt.timezone.utc)
-    overdue: list[dict] = []
-    if due_within_days is not None:
-        cutoff = now + dt.timedelta(days=due_within_days)
-        for lst in lists:
-            kept: list[dict] = []
-            for c in cards_by_list.get(lst["id"], []):
-                due = parse_due(c)
-                if due is None:
-                    continue
-                if due < now:
-                    overdue.append(c)
-                elif due <= cutoff:
-                    kept.append(c)
-            cards_by_list[lst["id"]] = kept
-
-    # Header.
     board_name = board.get("name", "(unnamed board)")
     short_url = board.get("shortUrl", "")
     visible_total = sum(len(cards_by_list.get(l["id"], [])) for l in lists)
@@ -173,7 +182,7 @@ def format_text(
 
     if overdue:
         lines.append(f"!! OVERDUE ({len(overdue)}) !!")
-        for c in sorted(overdue, key=lambda c: c.get("due") or ""):
+        for c in overdue:
             lines.append(format_card_line(c))
         lines.append("")
 
@@ -210,7 +219,8 @@ def main() -> None:
                         default=None, metavar="DAYS",
                         help="Cards due within DAYS (default 7 if no value). Overdue in a banner at top.")
     parser.add_argument("-j", "--json", action="store_true",
-                        help="Emit raw JSON instead of formatted text.")
+                        help="Emit JSON instead of formatted text. Honors --list and --due-within; "
+                             "when --due-within is set, overdue cards are returned under an 'overdue' key.")
     args = parser.parse_args()
 
     if args.due_within is not None and args.due_within < 0:
@@ -219,12 +229,13 @@ def main() -> None:
     short_link = parse_short_link(resolve_board(args.board))
     key, token = get_credentials()
     board = fetch_board(short_link, key, token)
+    filtered = filter_board(board, args.list_filter, args.due_within)
 
     if args.json:
-        json.dump(board, sys.stdout, indent=2, ensure_ascii=False)
+        json.dump(filtered, sys.stdout, indent=2, ensure_ascii=False)
         sys.stdout.write("\n")
     else:
-        sys.stdout.write(format_text(board, args.list_filter, args.due_within))
+        sys.stdout.write(format_text(filtered, args.due_within))
 
 
 if __name__ == "__main__":
