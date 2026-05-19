@@ -52,15 +52,14 @@ def resolve_board(cli_value: str | None) -> str:
 
 
 def parse_short_link(value: str) -> str:
-    """Extract the board short link from a URL or pass through a bare one.
-    Trims trailing slug/extension like 'NfmI6req.json' or 'NfmI6req/slug'."""
+    """Extract the board short link from a URL or pass through a bare one."""
     value = value.strip()
     if not value:
         die("empty board identifier")
     m = SHORT_LINK_RE.search(value)
     if not m:
         die(f"can't parse short link from: {value!r}")
-    return m.group(1).split("/", 1)[0].split(".", 1)[0]
+    return m.group(1)
 
 
 def get_credentials() -> tuple[str, str]:
@@ -222,9 +221,6 @@ def main() -> None:
                         help="Emit JSON instead of formatted text. Honors --list and --due-within; "
                              "when --due-within is set, overdue cards are returned under an 'overdue' key.")
     args = parser.parse_args()
-
-    if args.due_within is not None and args.due_within < 0:
-        die("--due-within must be a non-negative integer.")
 
     short_link = parse_short_link(resolve_board(args.board))
     key, token = get_credentials()
