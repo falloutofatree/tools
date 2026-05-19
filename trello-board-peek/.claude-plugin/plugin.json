@@ -1,0 +1,9 @@
+{
+  "name": "trello-board-peek",
+  "version": "1.0.0",
+  "description": "Peek at a Trello board: list its open cards grouped by list, optionally filtered by one list or by due date. Read-only, no caching.",
+  "author": {
+    "name": "Michael Bower"
+  },
+  "keywords": ["kanban", "productivity", "task", "tdl", "todo", "trello"]
+}
