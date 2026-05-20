@@ -4,6 +4,7 @@ Personal Claude plugin marketplace and MCP servers.
 
 ## Plugins
 
+- [`handoff`](handoff/) - write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later.
 - [`trello-board-peek`](trello-board-peek/) - peek at a Trello board: list its open cards grouped by list, optionally filtered.
 
 ## MCP servers

@@ -8,6 +8,12 @@
   },
   "plugins": [
     {
+      "name": "handoff",
+      "description": "Write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later.",
+      "source": "./handoff",
+      "category": "productivity"
+    },
+    {
       "name": "trello-board-peek",
       "description": "Peek at a Trello board: list its open cards grouped by list, optionally filtered by one list or by due date. Read-only, no caching.",
       "source": "./trello-board-peek",

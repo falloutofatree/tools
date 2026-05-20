@@ -1,0 +1,9 @@
+{
+  "name": "handoff",
+  "version": "1.0.0",
+  "description": "Write or update a terse handoff file capturing the current work, so it's easy to understand and pick up later.",
+  "author": {
+    "name": "Michael Bower"
+  },
+  "keywords": ["handoff", "recap", "session", "continuation", "notes", "productivity"]
+}
