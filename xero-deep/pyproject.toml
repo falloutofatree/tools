@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling>=1.21"]
+build-backend = "hatchling.build"
+
+[project]
+name = "xero-deep"
+version = "1.0.0"
+description = "MCP server exposing invoice-level and per-customer data from Xero."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Michael", email = "michael@gammawaves.io" }]
+dependencies = ["mcp>=1.2.0", "httpx>=0.27.0", "pydantic>=2.7.0"]
+
+[project.scripts]
+xero-deep = "xero_deep.server:main"
+xero-deep-init = "xero_deep.init_token:main"
+xero-deep-smoke = "xero_deep.smoke:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/xero_deep"]
+
+[tool.ruff]
+line-length = 88
+
+[tool.ruff.lint]
+extend-ignore = ["E701", "E702"]
+

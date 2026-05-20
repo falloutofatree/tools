@@ -1,0 +1,19 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+.venv/
+.ruff_cache/
+
+# Editor / OS
+.DS_Store
+
+# Environment / secrets
+.env
+.env.local
+.env.*.local
+.envrc
+
+# xero-deep
+.xero_tokens.json
