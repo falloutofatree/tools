@@ -7,7 +7,7 @@ description: Write or update a terse handoff file capturing the current work, so
 
 ## Where the file goes
 
-Filename: `<slug>-<latest-edit-date>.md`. Example: `plan-q3-marketing-launch-2026-05-20.md`.
+Filename: `<slug>-<latest-edit-date>.md`. Example: `plan-q3-marketing-launch-2026-05-20.md`. Never use a generic name like HANDOFF.md — always use the slug-date pattern.
 
 Location: working directory (outputs folder if one exists) or inline as a code block if you can't write to disk.
 
@@ -16,6 +16,8 @@ Update the filename's date on every write so it always reflects the last edit.
 After writing, tell the user the path (use `computer://` links if supported, e.g., Cowork). If you rendered inline, the block itself is the deliverable.
 
 ## Format
+
+Use this exact template. Do not substitute free-form notes or a different structure:
 
 ```
 # <title>
@@ -69,3 +71,7 @@ One handoff file per slug; extend across sessions, never wipe or duplicate.
 Only on explicit ask: "handoff", "recap", "give me the recap", "update the handoff", "what did we cover".
 
 You may offer once after substantive work concludes ("want a recap?"), but never write unprompted.
+
+## Style override
+
+If the user includes "freeform" or "free form" in their request, skip the template entirely and write a natural prose summary instead. No prescribed sections — just capture what matters.
