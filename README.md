@@ -1,6 +1,6 @@
 # tools
 
-Personal Claude plugin marketplace and MCP servers.
+Personal plugin marketplace and MCP servers, supporting Claude, ChatGPT, and other compatible AI clients. The marketplace install commands below are Claude-specific; other clients can use the skills and instructions directly.
 
 ## Plugins
 
@@ -17,7 +17,7 @@ Personal Claude plugin marketplace and MCP servers.
 
 ### Plugins
 
-In Claude (Cowork or Claude Code), add this marketplace by GitHub URL, then install a plugin:
+In Claude (Cowork or Claude Code; these commands are Claude-specific), add this marketplace by GitHub URL, then install a plugin:
 
 ```bash
 claude plugin marketplace add https://github.com/falloutofatree/tools.git
