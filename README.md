@@ -1,6 +1,6 @@
 # tools
 
-Personal plugin marketplace and MCP servers, supporting Claude, ChatGPT, and other compatible AI clients. The marketplace install commands below are Claude-specific; other clients can use the skills and instructions directly.
+Personal AI tools, installable as a plugin marketplace.
 
 ## Plugins
 
