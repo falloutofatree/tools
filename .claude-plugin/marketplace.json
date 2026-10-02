@@ -18,6 +18,12 @@
       "description": "Peek at a Trello board: list its open cards grouped by list, optionally filtered by one list or by due date. Read-only, no caching.",
       "source": "./trello-board-peek",
       "category": "productivity"
+    },
+    {
+      "name": "ai-sync",
+      "description": "Tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.",
+      "source": "./ai-sync",
+      "category": "productivity"
     }
   ]
 }
