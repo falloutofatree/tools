@@ -1,6 +1,6 @@
 {
   "name": "ai-sync",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.",
   "author": {
     "name": "Michael Bower"
