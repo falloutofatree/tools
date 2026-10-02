@@ -1,6 +1,6 @@
 ---
 name: trello-board-peek
-description: Triggers when the user asks for Trello board content in natural language - e.g. "what's on my Trello board", "what cards are in <list>", "what's due soon". For the direct slash commands /trello, /trello-list, /trello-due-soon, the command bodies invoke the script directly and this skill is not consulted.
+description: Triggers when the user asks for Trello board content in natural language - e.g. "what's on my Trello board", "what cards are in the Backlog list", "what's due soon". For the direct slash commands /trello, /trello-list, /trello-due-soon, the command bodies invoke the script directly and this skill is not consulted.
 ---
 
 # Trello Board Peek
