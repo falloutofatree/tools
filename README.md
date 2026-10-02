@@ -6,10 +6,11 @@ Personal Claude plugin marketplace and MCP servers.
 
 - [`handoff`](handoff/) - write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later.
 - [`trello-board-peek`](trello-board-peek/) - peek at a Trello board: list its open cards grouped by list, optionally filtered.
+- [`xero-deep`](xero-deep/) - slash commands for invoice-level and per-customer data from Xero. Requires the xero-deep MCP server to also be registered (see its README).
 
 ## MCP servers
 
-- [`xero-deep`](xero-deep/) - invoice-level and per-customer data from Xero. Complementary to the official Xero MCP connector at mcp.xero.com.
+- [`xero-deep`](xero-deep/) - invoice-level and per-customer data from Xero. Complementary to the official Xero MCP connector at mcp.xero.com. Also available as a plugin (above) for slash command support.
 
 ## Install
 
