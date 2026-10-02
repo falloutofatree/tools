@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "xero-deep"
-version = "1.0.0"
+version = "1.1.0"
 description = "MCP server exposing invoice-level and per-customer data from Xero."
 readme = "README.md"
 requires-python = ">=3.10"

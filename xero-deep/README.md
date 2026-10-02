@@ -1,16 +1,33 @@
-# xero-deep `v1.0.0 · 2026-05-20`
+# xero-deep `v1.1.0 · 2026-10-02`
 
-MCP server exposing invoice-level and per-customer data from Xero. Complementary to the [official Xero MCP connector](https://mcp.xero.com).
+MCP server and Claude Code plugin exposing invoice-level and per-customer data from Xero. Complementary to the [official Xero MCP connector](https://mcp.xero.com).
 
 ## What it does
 
-Three read-only tools, naming follows the official connector's `get_*` convention:
+Adds three slash commands (requires the plugin to be installed — see [Install as a plugin](#install-as-a-plugin)):
+
+- `/xero-invoices [status] [date_from] [date_to]` - filterable invoice list.
+- `/xero-customers <name-or-email>` - search customers by name or email.
+- `/xero-revenue <customer-id|name|email> <date_from> <date_to>` - total PAID revenue for one customer in a timeframe.
+
+Also exposes three read-only MCP tools (available to Claude directly once the MCP server is registered), naming follows the official connector's `get_*` convention:
 
 - `get_invoices(customer_id?, status?, date_from?, date_to?, page?, page_size?)` - filterable invoice list. Dates are `YYYY-MM-DD`. `page_size` is `1-1000` (default `100`).
 - `get_customer_revenue(customer_id, date_from, date_to)` - sum of `PAID` invoices for one customer in the timeframe.
 - `get_customers(name?, email?, include_archived?, all_contacts?, page?, page_size?)` - search Xero Contacts and return `customer_id`, name, email, status. Filters AND together; at least one is required. Defaults to `IsCustomer=true` only; pass `all_contacts=true` to include suppliers/vendors.
 
 `customer_id` maps to Xero's `ContactID`.
+
+## Install as a plugin
+
+To get the slash commands, install xero-deep as a Claude Code plugin from the `tools` marketplace:
+
+```bash
+claude plugin marketplace add https://github.com/falloutofatree/tools.git
+claude plugin install xero-deep@tools
+```
+
+The plugin does not bundle the MCP server — you still need to complete the [Setup](#setup) steps below and register the server separately.
 
 ## Setup
 

@@ -1,0 +1,9 @@
+{
+  "name": "xero-deep",
+  "version": "1.1.0",
+  "description": "Slash commands for invoice-level and per-customer data from Xero, via the xero-deep MCP server.",
+  "author": {
+    "name": "Michael Bower"
+  },
+  "keywords": ["xero", "accounting", "invoices", "finance", "revenue"]
+}
