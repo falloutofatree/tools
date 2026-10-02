@@ -1,6 +1,6 @@
-# xero-deep `v1.1.0 · 2026-10-02`
+# xero-deep `v1.1.1 · 2026-10-02`
 
-MCP server and Claude Code plugin exposing invoice-level and per-customer data from Xero. Complementary to the [official Xero MCP connector](https://mcp.xero.com).
+MCP server and plugin exposing invoice-level and per-customer data from Xero. Complementary to the [official Xero MCP connector](https://mcp.xero.com). Works with Claude and other MCP-compatible AI clients; the plugin and its slash commands are for Claude.
 
 ## What it does
 
@@ -10,7 +10,7 @@ Adds three slash commands (requires the plugin to be installed — see [Install 
 - `/xero-customers <name-or-email>` - search customers by name or email.
 - `/xero-revenue <customer-id|name|email> <date_from> <date_to>` - total PAID revenue for one customer in a timeframe.
 
-Also exposes three read-only MCP tools (available to Claude directly once the MCP server is registered), naming follows the official connector's `get_*` convention:
+Also exposes three read-only MCP tools (available to your AI client directly once the MCP server is registered), naming follows the official connector's `get_*` convention:
 
 - `get_invoices(customer_id?, status?, date_from?, date_to?, page?, page_size?)` - filterable invoice list. Dates are `YYYY-MM-DD`. `page_size` is `1-1000` (default `100`).
 - `get_customer_revenue(customer_id, date_from, date_to)` - sum of `PAID` invoices for one customer in the timeframe.
@@ -20,7 +20,7 @@ Also exposes three read-only MCP tools (available to Claude directly once the MC
 
 ## Install as a plugin
 
-To get the slash commands, install xero-deep as a Claude Code plugin from the `tools` marketplace:
+To get the slash commands, install xero-deep as a plugin from the `tools` marketplace (Claude-specific commands):
 
 ```bash
 claude plugin marketplace add https://github.com/falloutofatree/tools.git
@@ -83,7 +83,7 @@ export XERO_TENANT_ID="..."            # your specific Xero organization (set if
 export XERO_TOKEN_STORE_PATH="..."     # override default ~/.xero-deep/tokens.json
 ```
 
-Put these in `~/.zshenv` (macOS/Linux). Both Cowork and Claude Code read from the same place — Claude Code inherits your shell env directly, and xero-deep falls back to sourcing `~/.zshenv` itself when launched by a GUI app that doesn't pass shell env through. No need to duplicate secrets into any MCP client's config.
+Put these in `~/.zshenv` (macOS/Linux). Cowork and Claude Code read from the same place (as can other MCP clients) — Claude Code inherits your shell env directly, and xero-deep falls back to sourcing `~/.zshenv` itself when launched by a GUI app that doesn't pass shell env through. No need to duplicate secrets into any MCP client's config.
 
 If you're on bash/fish or Windows, export them however your shell/OS prefers. The xero-deep binary will use them as long as they're in its process env at startup.
 
@@ -96,7 +96,7 @@ xero-deep-smoke
 xero-deep-smoke --name "Acme"             # also exercises get_customers
 ```
 
-The basic invocation walks a timeframe of recent paid invoices and totals one customer's revenue. To pin a specific customer with `--customer-id <ContactID>`, grab a `ContactID` from the JSON output of the previous run, or call `get_customers` (via Claude or `xero-deep-smoke --name`).
+The basic invocation walks a timeframe of recent paid invoices and totals one customer's revenue. To pin a specific customer with `--customer-id <ContactID>`, grab a `ContactID` from the JSON output of the previous run, or call `get_customers` (via your AI client or `xero-deep-smoke --name`).
 
 ## Running
 
@@ -133,6 +133,10 @@ claude mcp list
 ```
 
 Replace `/absolute/path/to/.venv/bin/xero-deep` with the absolute path to the installed entry point inside your venv. Easiest way to get it: with your venv activated, run `which xero-deep` and paste that path.
+
+### Register with other MCP clients
+
+Any MCP client that supports stdio servers can run xero-deep. Point it at the absolute path to the venv binary (same as above) using that client's MCP server configuration.
 
 ## What's cached
 
