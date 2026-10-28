@@ -27,3 +27,7 @@ claude plugin install trello-board-peek@tools
 ### MCP servers
 
 MCP servers are installed per-server, not via the marketplace. See each server's README for setup - e.g. [`xero-deep/README.md`](xero-deep/README.md) covers the Python venv install and the `claude mcp add` registration step.
+
+## License
+
+[MIT](LICENSE).
