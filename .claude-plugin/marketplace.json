@@ -30,6 +30,12 @@
       "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Requires browser interaction.",
       "source": "./gsc-domain-verify",
       "category": "productivity"
+    },
+    {
+      "name": "gsc-verify",
+      "description": "Verify a domain with Google via a Cloudflare DNS TXT record and add it as a Search Console domain property. Idempotent; supports dry runs.",
+      "source": "./gsc-verify",
+      "category": "productivity"
     }
   ]
 }
