@@ -24,6 +24,12 @@
       "description": "Tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.",
       "source": "./ai-sync",
       "category": "productivity"
+    },
+    {
+      "name": "xero-deep",
+      "description": "Slash commands for invoice-level and per-customer data from Xero, via the xero-deep MCP server. Requires the MCP server to be registered separately.",
+      "source": "./xero-deep",
+      "category": "productivity"
     }
   ]
 }
