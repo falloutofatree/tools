@@ -5,13 +5,13 @@ description: Verify a domain in Google Search Console via the Site Verification 
 
 # Google Search Console Domain Verification
 
-`v0.1.0 · 2026-10-29`
+`v0.2.0 · 2026-10-29`
 
 This skill is built for agents: API steps use prefilled URLs with machine-readable results; only the sign-ins and Google's consent popup require browser interaction. If you're working by hand, Search Console's Add property option is about as quick.
 
 **Replace `example.com` with your domain throughout.**
 
-1. **Sign In:** From a browser, sign in to search.google.com/search-console. In another tab, sign into the domain's DNS host.
+1. **Check Sign-Ins:** Before doing anything else, check that the browser is signed in to search.google.com/search-console and, in another tab, to the domain's DNS host. If either isn't, ask the user to sign in and wait for them to confirm before continuing.
 
 2. **Get Token:** In a third tab, open the URL below, open the API panel, and click Execute. Approve Google's consent popup (or have the account owner do so). The popup may open behind the window; no response appears until it's approved. Copy the full token, including `google-site-verification=`.
 
