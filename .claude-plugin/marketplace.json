@@ -24,6 +24,12 @@
       "description": "Tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.",
       "source": "./ai-sync",
       "category": "productivity"
+    },
+    {
+      "name": "gsc-domain-verify",
+      "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Requires browser interaction.",
+      "source": "./gsc-domain-verify",
+      "category": "productivity"
     }
   ]
 }
