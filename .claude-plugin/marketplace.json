@@ -30,6 +30,12 @@
       "description": "Slash commands for invoice-level and per-customer data from Xero, via the xero-deep MCP server. Requires the MCP server to be registered separately.",
       "source": "./xero-deep",
       "category": "productivity"
+    },
+    {
+      "name": "gsc-domain-verify",
+      "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Requires browser interaction.",
+      "source": "./gsc-domain-verify",
+      "category": "productivity"
     }
   ]
 }
