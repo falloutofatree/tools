@@ -1,0 +1,9 @@
+{
+  "name": "gsc-verify",
+  "version": "1.1.0",
+  "description": "Verify a domain with Google via a Cloudflare DNS TXT record and add it as a Search Console domain property. Idempotent; supports dry runs.",
+  "author": {
+    "name": "Michael Bower"
+  },
+  "keywords": ["cloudflare", "dns", "google", "search-console", "seo", "site-verification"]
+}

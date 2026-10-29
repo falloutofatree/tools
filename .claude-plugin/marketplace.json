@@ -24,6 +24,12 @@
       "description": "Tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.",
       "source": "./ai-sync",
       "category": "productivity"
+    },
+    {
+      "name": "gsc-verify",
+      "description": "Verify a domain with Google via a Cloudflare DNS TXT record and add it as a Search Console domain property. Idempotent; supports dry runs.",
+      "source": "./gsc-verify",
+      "category": "productivity"
     }
   ]
 }

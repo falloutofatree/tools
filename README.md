@@ -5,6 +5,7 @@ Personal AI tools, installable as a plugin marketplace.
 ## Plugins
 
 - [`ai-sync`](ai-sync/) - tools for keeping AI preferences, instructions, and config in sync across AI apps and agents.
+- [`gsc-verify`](gsc-verify/) - verify a domain with Google via a Cloudflare DNS TXT record and add it as a Search Console domain property.
 - [`handoff`](handoff/) - write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later.
 - [`trello-board-peek`](trello-board-peek/) - peek at a Trello board: list its open cards grouped by list, optionally filtered.
 - [`xero-deep`](xero-deep/) - slash commands for invoice-level and per-customer data from Xero. Requires the xero-deep MCP server to also be registered (see its README).
