@@ -1,6 +1,6 @@
 ---
 name: gsc-domain-verify
-description: Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Use when asked to verify a domain in Search Console.
+description: Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Use when asked to verify a domain in Search Console. Requires browser interaction.
 ---
 
 # Google Search Console Domain Verification

@@ -1,4 +1,4 @@
-# gsc-domain-verify
+# gsc-domain-verify `v0.1.0 · 2026-10-29`
 
 Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Built for agents: API steps use prefilled API Explorer URLs with machine-readable results; only sign-ins and Google's consent popup need a human.
 

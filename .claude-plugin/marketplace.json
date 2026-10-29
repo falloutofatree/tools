@@ -27,7 +27,7 @@
     },
     {
       "name": "gsc-domain-verify",
-      "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record.",
+      "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Requires browser interaction.",
       "source": "./gsc-domain-verify",
       "category": "productivity"
     }
