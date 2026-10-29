@@ -11,7 +11,8 @@ Steps per domain (each one is idempotent, so re-running is safe):
     5. Add sc-domain:<domain> to Search Console (skipped if already there).
 
 Auth:
-    Google: gcloud application-default credentials, or GOOGLE_ACCESS_TOKEN.
+    Google: gcloud application-default credentials, or GOOGLE_ACCESS_TOKEN
+            (e.g. from OAuth Playground, which needs no GCP project).
     Cloudflare: CLOUDFLARE_API_TOKEN (Zone:Read + DNS:Edit on the zone).
 
 Usage:
@@ -108,7 +109,8 @@ def adc_quota_project() -> str | None:
 
 def google_headers(quota_project: str | None) -> dict:
     token = os.environ.get("GOOGLE_ACCESS_TOKEN", "").strip()
-    if not token:
+    from_adc = not token
+    if from_adc:
         try:
             token = subprocess.run(
                 ["gcloud", "auth", "application-default", "print-access-token"],
@@ -120,7 +122,9 @@ def google_headers(quota_project: str | None) -> dict:
             die(f"could not get an ADC token ({e.stderr.strip()}).\nLog in with:\n  {LOGIN_HINT}")
     headers = {"Authorization": f"Bearer {token}"}
     # User ADC needs a quota project for these APIs, or Google returns 403.
-    project = quota_project or os.environ.get("GOOGLE_CLOUD_QUOTA_PROJECT") or adc_quota_project()
+    # A token from elsewhere (e.g. OAuth Playground) bills its own client's project.
+    project = quota_project or os.environ.get("GOOGLE_CLOUD_QUOTA_PROJECT") or (
+        adc_quota_project() if from_adc else None)
     if project:
         headers["x-goog-user-project"] = project
     return headers

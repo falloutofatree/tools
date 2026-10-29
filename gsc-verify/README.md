@@ -1,4 +1,4 @@
-# gsc-verify `v1.0.0 · 2026-10-29`
+# gsc-verify `v1.1.0 · 2026-10-29`
 
 Verify a domain with Google via a Cloudflare DNS TXT record, then add it as a Search Console domain property (`sc-domain:example.com`). Idempotent: every step checks current state first, so re-running is safe.
 
@@ -18,7 +18,19 @@ The TXT record is left in place on purpose: Google re-checks it periodically, an
 
 ## Setup
 
-### Google
+### Google, no GCP project (quickest)
+
+Get a short-lived token from Google's OAuth 2.0 Playground, which uses Google's own OAuth client:
+
+1. Open https://developers.google.com/oauthplayground, signed in as the account that should own the domain.
+2. In Step 1, paste these into "Input your own scopes" (space-separated) and click Authorize APIs:
+   `https://www.googleapis.com/auth/siteverification https://www.googleapis.com/auth/webmasters`
+3. In Step 2, click "Exchange authorization code for tokens" and copy the access token.
+4. `export GOOGLE_ACCESS_TOKEN="ya29...."`
+
+The token lasts about an hour, so get a fresh one per session. Playground keeps a refresh token for up to 24h unless you untick auto-refresh; revoke access afterward at https://myaccount.google.com/permissions if you like.
+
+### Google, with gcloud and a GCP project (repeatable)
 
 1. Pick a GCP project to bill API quota to, and enable both APIs on it:
 
@@ -38,7 +50,7 @@ The TXT record is left in place on purpose: Google re-checks it periodically, an
    gcloud auth application-default set-quota-project PROJECT_ID
    ```
 
-The script reads the quota project from the ADC file; override with `--quota-project` or `GOOGLE_CLOUD_QUOTA_PROJECT`. To skip gcloud entirely, set `GOOGLE_ACCESS_TOKEN` to a token carrying the same scopes.
+The script reads the quota project from the ADC file; override with `--quota-project` or `GOOGLE_CLOUD_QUOTA_PROJECT`. When `GOOGLE_ACCESS_TOKEN` is set, gcloud and the ADC file are not used.
 
 The Google account you log in with becomes the verified owner of the domain.
 
