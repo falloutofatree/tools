@@ -1,6 +1,6 @@
 {
   "name": "gsc-domain-verify",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Verify a domain in Google Search Console via the Site Verification API and a DNS TXT record. Requires browser interaction.",
   "author": {
     "name": "Michael Bower"
