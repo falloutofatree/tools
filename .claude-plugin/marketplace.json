@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "handoff",
-      "description": "Write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later.",
+      "description": "Write or update a terse handoff `.md` file capturing the current work, so it's easy to understand and pick up later. Also surfaces gotchas (changes to the ask, dead ends) inline as they arise.",
       "source": "./handoff",
       "category": "productivity"
     },
