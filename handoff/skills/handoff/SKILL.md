@@ -82,9 +82,9 @@ Build Gotchas from every `New:`/`Changes:` item surfaced inline this session, re
 
 1. Fold each Change into the item it replaced.
 2. Drop items no longer true.
-3. Add final high-level takeaways, assessed now.
+3. Add final high-level takeaways, assessed now. They meet the same bar as inline items; answered asides go in Questions, not Gotchas.
 
-Drop the `New:`/`Changes:` prefixes; the file is a snapshot. Keep `(was: ...)` only where the prior version would otherwise mislead a reader. If earlier inline items are no longer visible (e.g., after context compaction), reconstruct them from the compaction summary and current state. Existing-file merge rules still apply. The 5-item aim stays soft; surfaced items take priority over new takeaways.
+Drop the `New:`/`Changes:` prefixes; the file is a snapshot. Keep `(was: ...)` only where the prior version would otherwise mislead a reader, and don't also restate it in the item. If earlier inline items are no longer visible (e.g., after context compaction), reconstruct them from the compaction summary and current state. Existing-file merge rules still apply. The 5-item aim stays soft; surfaced items take priority over new takeaways.
 
 ## Updating an existing handoff
 
