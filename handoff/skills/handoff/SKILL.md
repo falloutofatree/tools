@@ -9,7 +9,7 @@ Two modes: the handoff file (explicit ask only) and inline Gotchas (always on, n
 
 ## Where the file goes
 
-Filename: `<slug>-<latest-edit-date>.md`. Example: `plan-q3-marketing-launch-2026-05-20.md`. Never use a generic name like HANDOFF.md — always use the slug-date pattern.
+Filename: `<slug>-<latest-edit-date>.md`. Example: `plan-q3-marketing-launch-2026-05-20.md`. Never use a generic name like HANDOFF.md; always use the slug-date pattern.
 
 Location: working directory (outputs folder if one exists) or inline as a code block if you can't write to disk.
 
@@ -44,7 +44,7 @@ Use this exact template. Do not substitute free-form notes or a different struct
 - [x] Question? -> Answer.
 ```
 
-Sections below the summary are optional; drop empty ones, don't pad with "None" or filler. Aim for ≤ 5 items per section; if you're over, you're likely restating rules already in this SKILL.md or capturing noise.
+Sections below the summary are optional; drop empty ones, don't pad with "None" or filler. Aim for at most 5 items per section; if you're over, you're likely restating rules already in this SKILL.md or capturing noise.
 
 ## Section taxonomy
 
@@ -106,4 +106,4 @@ Exception: Inline Gotchas need no ask and never write a file.
 
 ## Style override
 
-If the user includes "freeform" or "free form" in their request, skip the template entirely and write a natural prose summary instead. No prescribed sections — just capture what matters.
+If the user includes "freeform" or "free form" in their request, skip the template entirely and write a natural prose summary instead. No prescribed sections; just capture what matters.
