@@ -1,4 +1,4 @@
-# handoff `v1.1.0 · 2026-10-30`
+# handoff `v2.0.0 · 2026-10-30`
 
 Write or update a terse handoff file capturing the current work, so it's easy to understand and pick up later.
 

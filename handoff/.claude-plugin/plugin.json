@@ -1,6 +1,6 @@
 {
   "name": "handoff",
-  "version": "1.1.0",
+  "version": "2.0.0",
   "description": "Write or update a terse handoff file capturing the current work, so it's easy to understand and pick up later. Also surfaces gotchas (changes to the ask, dead ends) inline as they arise.",
   "author": {
     "name": "Michael Bower"
