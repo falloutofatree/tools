@@ -1,15 +1,83 @@
-.env
-.env.local
-.env.*.local
-.envrc
-__pycache__/
-*.pyc
-*.pyo
-.DS_Store
-*.plugin
-nonexistent/
-
-# Python virtualenvs + caches
+# Dependencies
 .venv/
-.ruff_cache/
-*.egg-info/
+node_modules/
+
+# Deploy tooling (local CLI state and local secrets)
+.aws-sam/
+.dev.vars*
+.firebase/
+.netlify/
+.serverless/
+.vercel/
+.wrangler/
+
+# Editors / IDEs
+*~
+.#*
+\#*#
+**/.claude/settings.local.json
+.idea/shelf/
+.idea/usage.statistics.xml
+.idea/workspace.xml
+*.sublime-workspace
+*.swo
+*.swp
+.vs/
+
+# Environment / Secrets
+.env*
+id_dsa
+id_ecdsa
+id_ed25519
+id_rsa
+*.key
+*.p12
+*.pem
+*.pfx
+
+# Logs
+*.log
+*.log.*
+logs/
+
+# OS Junk
+._*
+desktop.ini
+.directory
+.DS_Store
+Thumbs.db
+
+# Temp / Cache
+*.bak
+*.cache
+.cache/
+*.orig
+__pycache__/
+*temp/
+*.tmp
+*tmp/
+
+###############################################################################
+# Exceptions (git uses the last matching rule, so these must stay at the end)
+###############################################################################
+
+# Examples / Templates (always tracked)
+!*.example
+!*.sample
+!*.template
+
+# Exceptions: fixtures (test data, never real credentials)
+!**/fixtures/**/*.key
+!**/fixtures/**/*.p12
+!**/fixtures/**/*.pem
+!**/fixtures/**/*.pfx
+!**/fixtures/**/id_dsa
+!**/fixtures/**/id_ecdsa
+!**/fixtures/**/id_ed25519
+!**/fixtures/**/id_rsa
+
+# Exceptions: public certs
+# Certificates are public, so *.crt is not ignored. PEM files are ambiguous (could be a private
+# key), so only PEMs named *.cert.pem or *.pub.pem are re-included.
+!*.cert.pem
+!*.pub.pem
